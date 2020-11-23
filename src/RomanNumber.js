@@ -53,8 +53,6 @@ const convertToInt = (value) => {
         }
         let nextToken = value.charAt(i + 1)
         let nextTokenValue = romanNumbersTokens.get(nextToken)
-        console.log("token,tokenValue", token, tokenValue)
-        console.log("nextToken,nextTokenValue", nextToken, nextTokenValue)
         if (nextTokenValue > tokenValue) {
             res += nextTokenValue - tokenValue
             i++

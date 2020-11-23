@@ -67,7 +67,7 @@ it("should return 'MCMLXVIII' for 1968 ", () => {
 })
 
 it("should return 'MCDLXXIII' for 1473 ", () => {
-    expect(new RomanNumber(1473).toString()).toBe('MCDLXXIII')
+    expect(new RomanNumber(1482).toString()).toBe('MCDLXXIII')
 })
 
 it("should return 'MMIM' for 2999 ", () => {
@@ -84,7 +84,7 @@ it("should throw 'invalid range' for 10000 ", () => {
 })
 
 it("should return 429 for 'CDXXIX'  ", () => {
-    expect(new RomanNumber('CDXXIX').toString()).toBe(429)
+    expect(new RomanNumber('CDXXIX').toInt()).toBe(429)
 })
 
 it("should throw 'invalid value' for 'CD1X'  ", () => {
@@ -96,13 +96,13 @@ it("should throw 'invalid value' for 'error'  ", () => {
     expect(() => { new RomanNumber('error') }).toThrow(invalidValueMessage)
 })
 
-it("should return 1473 for 'MCDLXXXII'  ", () => {
-    expect(new RomanNumber('MCDLXXXII').toString()).toBe(1473)
+it("should return 1482 for 'MCDLXXXII'  ", () => {
+    expect(new RomanNumber('MCDLXXXII').toInt()).toBe(1482)
 })
 
 
 it("should return 1980 for 'MCMLXXX'  ", () => {
-    expect(new RomanNumber('MCMLXXX').toString()).toBe(1980)
+    expect(new RomanNumber('MCMLXXX').toInt()).toBe(1980)
 })
 
 it("should throw 'invalid value' for 'MMMMCMXCIX'  ", () => {
