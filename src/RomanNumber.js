@@ -35,10 +35,16 @@ export default class RomanNumber {
 
 const convertToInt = (value) => {
     let res = 0
+    let successiveTokenCount = 0
+    let lastTokenValue = value.charAt(0)
     for (let i = 0; i < value.length; i++) {
         let token = value.charAt(i)
         let tokenValue = romanNumbersTokens.has(token)
         if (!tokenValue) {
+            throw new Error('invalid value')
+        }
+        lastTokenValue === token ? successiveTokenCount++ : successiveTokenCount = 0
+        if (successiveTokenCount > 3) {
             throw new Error('invalid value')
         }
         res += tokenValue
