@@ -1,6 +1,17 @@
+const romanNumbersTokens = new Map();
+romanNumbersTokens.set("M", 1000);
+romanNumbersTokens.set("D", 500);
+romanNumbersTokens.set("C", 100);
+romanNumbersTokens.set("L", 50);
+romanNumbersTokens.set("X", 10);
+romanNumbersTokens.set("V", 5);
+romanNumbersTokens.set("I", 1);
+
 export default class RomanNumber {
     constructor(value) {
-
+        if (!value || value.length === 0) {
+            throw new Error('value required')
+        }
         if (typeof value === "string") {
             this.stringValue = value;
             this.intValue = convertToInt(value);
@@ -23,9 +34,17 @@ export default class RomanNumber {
 
 
 const convertToInt = (value) => {
-    return 0
+    let res = 0
+    for (let i = 0; i < value.length; i++) {
+        let token = value.charAt(i)
+        if (!romanNumbersTokens.has(token)) {
+            throw new Error('invalid value')
+        }
+    }
+    return res
 }
 
 const convertToString = (value) => {
-    return ""
+    let res = ""
+    return res
 }
