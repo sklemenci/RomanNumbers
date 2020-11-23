@@ -38,11 +38,9 @@ it("should return 'V' for 5", () => {
 
 })
 
-
 it("should return 1 for 'I' ", () => {
     expect(new RomanNumber('I').toInt()).toBe(1)
 })
-
 
 it("should return 3 for 'III' ", () => {
     expect(new RomanNumber('III').toInt()).toBe(3)
@@ -113,7 +111,18 @@ it("should throw 'invalid value' for 'MMMMDMXCIX'  ", () => {
     expect(() => { new RomanNumber('MMMMCMXCIX') }).toThrow(invalidValueMessage)
 })
 
+//not mandatory test 
 
+it("should throw 'invalid value' for 2.4  ", () => {
+    expect(() => { new RomanNumber(2.4) }).toThrow(invalidValueMessage)
+})
+
+it("should throw 'invalid value' for NaN  ", () => {
+    expect(() => { new RomanNumber(NaN) }).toThrow(invalidValueMessage)
+})
+it("should throw 'invalid value' for Infinity  ", () => {
+    expect(() => { new RomanNumber(Infinity) }).toThrow(invalidValueMessage)
+})
 
 // null, ‘’, 0, 1, 3, 4, 5, ‘I’, ‘III’, ‘IIII’, ‘IV’, ‘V’, 1968, ‘1473’, 2999, 3000, 10000, ‘CDXXIX’, ‘CD1X’,
 //‘error’, ‘MCDLXXXII’, ‘MCMLXXX’, ‘MMMMCMXCIX’, ‘MMMMDMXCIX’
