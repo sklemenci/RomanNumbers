@@ -37,9 +37,9 @@ const convertToInt = (value) => {
     let res = 0
     let successiveTokenCount = 0
     let lastTokenValue = value.charAt(0)
-    for (let i = 0; i < value.length; i++) {
+    for (let i = 0; i < value.length - 1; i++) {
         let token = value.charAt(i)
-        let tokenValue = romanNumbersTokens.has(token)
+        let tokenValue = romanNumbersTokens.get(token)
         if (!tokenValue) {
             throw new Error('invalid value')
         }
@@ -47,6 +47,8 @@ const convertToInt = (value) => {
         if (successiveTokenCount > 3) {
             throw new Error('invalid value')
         }
+        let nextToken = value.charAt(i + 1)
+        let tokenValue = romanNumbersTokens.get(nextToken)
         res += tokenValue
     }
     return res
