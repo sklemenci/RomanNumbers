@@ -1,5 +1,6 @@
 export default class RomanNumber {
     constructor(value) {
+
         if (typeof value === "string") {
             this.stringValue = value;
             this.intValue = convertToInt(value);
@@ -7,6 +8,9 @@ export default class RomanNumber {
         if (typeof value === "number") {
             this.intValue = value;
             this.stringValue = convertToString(value);
+        }
+        if (this.intValue < 0 || this.intValue > 3999) {
+            throw new Error('invalid range')
         }
     }
     toString() {
