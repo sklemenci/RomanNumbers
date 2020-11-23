@@ -1,5 +1,9 @@
 import { romanIntValues, romanNumbersTokens } from './constants'
 
+//RomanNumber Class used to perform Roman Number to integer and Integer to Roman Number conversion
+// throws 'value required' if value is null or empty
+// throws invalid range if value  is > 3999 or <1 in Roman Number or Integer
+// throws invalid value if value  is an illegal Roman number string , a non finite number or a decimal 
 export default class RomanNumber {
     constructor(value) {
         if (value === null || value.length === 0) {
@@ -68,7 +72,6 @@ const convertToString = (value) => {
         while (reminder - intValues[i] < 0 && i < intValues.length) {
             i++;
         }
-
         res += romanIntValues.get(intValues[i]);
         reminder -= intValues[i];
     }
