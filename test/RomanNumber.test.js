@@ -4,7 +4,7 @@ import RomanNumber from '../src/RomanNumber'
 
 //mandatory test cases
 it("should throw 'value required' for null", () => {
-
+    expect(() => { new RomanNumber(null) }).throw('value required')
 })
 
 it("should throw 'value required' for ''", () => {
