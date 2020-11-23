@@ -37,9 +37,11 @@ const convertToInt = (value) => {
     let res = 0
     for (let i = 0; i < value.length; i++) {
         let token = value.charAt(i)
-        if (!romanNumbersTokens.has(token)) {
+        let tokenValue = romanNumbersTokens.has(token)
+        if (!tokenValue) {
             throw new Error('invalid value')
         }
+        res += tokenValue
     }
     return res
 }
