@@ -79,6 +79,9 @@ const convertToInt = (value) => {
 };
 
 const convertToString = (value) => {
+    if (!Number.isInteger(value) || !Number.isFinite(value) || isNaN(value)) {
+        throw new Error("invalid value");
+    }
     let res = "";
     let reminder = value;
     let intValues = Array.from(romanIntValues.keys());
