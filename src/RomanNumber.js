@@ -7,10 +7,26 @@ romanNumbersTokens.set("X", 10);
 romanNumbersTokens.set("V", 5);
 romanNumbersTokens.set("I", 1);
 
+const romanIntValues = new Map();
+
+romanIntValues.set(1000, "M");
+romanIntValues.set(900, "CM");
+romanIntValues.set(500, "D");
+romanIntValues.set(400, "CD");
+romanIntValues.set(100, "C");
+romanIntValues.set(90, "XC");
+romanIntValues.set(50, "L");
+romanIntValues.set(40, "XL");
+romanIntValues.set(10, "X");
+romanIntValues.set(9, "IX");
+romanIntValues.set(5, "V");
+romanIntValues.set(4, "IV");
+romanIntValues.set(1, "I");
+
 export default class RomanNumber {
     constructor(value) {
         if (value === null || value.length === 0) {
-            throw new Error('value required')
+            throw new Error("value required");
         }
         if (typeof value === "string") {
             this.stringValue = value;
@@ -21,7 +37,7 @@ export default class RomanNumber {
             this.stringValue = convertToString(value);
         }
         if (this.intValue < 1 || this.intValue > 3999) {
-            throw new Error('invalid range')
+            throw new Error("invalid range");
         }
     }
     toString() {
@@ -32,38 +48,49 @@ export default class RomanNumber {
     }
 }
 
-
 const convertToInt = (value) => {
-    let res = 0
-    let successiveTokenCount = 0
-    let lastTokenValue = value.charAt(0)
+    let res = 0;
+    let successiveTokenCount = 0;
+    let lastTokenValue = value.charAt(0);
     for (let i = 0; i < value.length; i++) {
-        let token = value.charAt(i)
-        let tokenValue = romanNumbersTokens.get(token)
+        let token = value.charAt(i);
+        let tokenValue = romanNumbersTokens.get(token);
         if (!tokenValue) {
-            throw new Error('invalid value')
+            throw new Error("invalid value");
         }
-        lastTokenValue === token ? successiveTokenCount++ : successiveTokenCount = 0
+        lastTokenValue === token ? successiveTokenCount++ : (successiveTokenCount = 0);
         if (successiveTokenCount > 3) {
-            throw new Error('invalid value')
+            throw new Error("invalid value");
         }
         if (i === value.length - 1) {
             res += tokenValue;
             continue;
         }
-        let nextToken = value.charAt(i + 1)
-        let nextTokenValue = romanNumbersTokens.get(nextToken)
+        let nextToken = value.charAt(i + 1);
+        let nextTokenValue = romanNumbersTokens.get(nextToken);
         if (nextTokenValue > tokenValue) {
-            res += nextTokenValue - tokenValue
-            i++
-            continue
+            res += nextTokenValue - tokenValue;
+            i++;
+            continue;
         }
-        res += tokenValue
+        res += tokenValue;
     }
-    return res
-}
+    return res;
+};
 
 const convertToString = (value) => {
-    let res = ""
-    return res
-}
+    let res = "";
+    let reminder = value;
+    let intValues = Array.from(romanIntValues.keys());
+
+    while (reminder > 0) {
+        let i = 0;
+        while (reminder - intValues[i] < 0 && i < intValues.length) {
+            i++;
+        }
+
+        res += romanIntValues.get(intValues[i]);
+        reminder -= intValues[i];
+    }
+    return res;
+};

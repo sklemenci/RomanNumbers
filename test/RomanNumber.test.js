@@ -67,11 +67,11 @@ it("should return 'MCMLXVIII' for 1968 ", () => {
 })
 
 it("should return 'MCDLXXIII' for 1473 ", () => {
-    expect(new RomanNumber(1482).toString()).toBe('MCDLXXIII')
+    expect(new RomanNumber(1473).toString()).toBe('MCDLXXIII')
 })
 
-it("should return 'MMIM' for 2999 ", () => {
-    expect(new RomanNumber(2999).toString()).toBe('MIM')
+it("should return 'MMCMXCIX' for 2999 ", () => {
+    expect(new RomanNumber(2999).toString()).toBe('MMCMXCIX')
 })
 
 it("should return 'MMM' for 3000 ", () => {
