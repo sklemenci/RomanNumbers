@@ -9,7 +9,7 @@ romanNumbersTokens.set("I", 1);
 
 export default class RomanNumber {
     constructor(value) {
-        if (!value || value.length === 0) {
+        if (value === null || value.length === 0) {
             throw new Error('value required')
         }
         if (typeof value === "string") {
@@ -20,7 +20,7 @@ export default class RomanNumber {
             this.intValue = value;
             this.stringValue = convertToString(value);
         }
-        if (this.intValue < 0 || this.intValue > 3999) {
+        if (this.intValue < 1 || this.intValue > 3999) {
             throw new Error('invalid range')
         }
     }
@@ -48,7 +48,13 @@ const convertToInt = (value) => {
             throw new Error('invalid value')
         }
         let nextToken = value.charAt(i + 1)
-        let tokenValue = romanNumbersTokens.get(nextToken)
+        let nextTokenValue = romanNumbersTokens.get(nextToken)
+        console.log("token,tokenValue", token, tokenValue)
+        console.log("nextToken,nextTokenValue", nextToken, nextTokenValue)
+        if (nextTokenValue > tokenValue) {
+            res += nextTokenValue - tokenValue
+            i++
+        }
         res += tokenValue
     }
     return res
