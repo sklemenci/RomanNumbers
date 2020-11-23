@@ -20,28 +20,30 @@ it("should throw 'invalid range' for 0", () => {
 })
 
 it("should return 'I' for 1", () => {
-    expect(new RomanNumber('I').intValue()).toBe(1)
+    expect(new RomanNumber(1).stringValue()).toBe('I')
 })
 
 
 it("should return 'III' for 3", () => {
+    expect(new RomanNumber(3).stringValue()).toBe('III')
 
 })
 
 it("should return 'IV' for 4", () => {
-
+    expect(new RomanNumber(4).intValue()).toBe('IV')
 })
 
 it("should return 'V' for 5", () => {
+    expect(new RomanNumber(5).intValue()).toBe('V')
 
 })
 
 it("should return 1 for 'I' ", () => {
-
+    expect(new RomanNumber('I').stringValue()).toBe(1)
 })
 
 it("should return 3 for 'III' ", () => {
-
+    expect(new RomanNumber('III').stringValue()).toBe(3)
 })
 
 it("should throw 'invalid value' for 'IIII' ", () => {
@@ -49,25 +51,28 @@ it("should throw 'invalid value' for 'IIII' ", () => {
 })
 
 it("should return 4 for 'IV' ", () => {
+    expect(new RomanNumber('IV').stringValue()).toBe(4)
 
 })
 it("should return 5 for 'V' ", () => {
-
+    expect(new RomanNumber('V').stringValue()).toBe(5)
 })
 
 it("should return 'MCMLXVIII' for 1968 ", () => {
+    expect(new RomanNumber(1968).stringValue()).toBe('MCMLXVIII')
 
 })
 
 it("should return 'MCDLXXIII' for 1473 ", () => {
-
+    expect(new RomanNumber(1473).stringValue()).toBe('MCDLXXIII')
 })
 
 it("should return 'MMIM' for 2999 ", () => {
-
+    expect(new RomanNumber(2999).stringValue()).toBe('MIM')
 })
 
 it("should return 'MMM' for 3000 ", () => {
+    expect(new RomanNumber(3000).stringValue()).toBe('MMM')
 
 })
 
@@ -76,7 +81,7 @@ it("should throw 'invalid range' for 10000 ", () => {
 })
 
 it("should return 429 for 'CDXXIX'  ", () => {
-
+    expect(new RomanNumber('CDXXIX').stringValue()).toBe(429)
 })
 
 it("should throw 'invalid value' for 'CD1X'  ", () => {
@@ -85,15 +90,16 @@ it("should throw 'invalid value' for 'CD1X'  ", () => {
 })
 
 it("should throw 'invalid value' for 'error'  ", () => {
-
+    expect(() => { new RomanNumber('error') }).toThrow(invalidValueMessage)
 })
 
 it("should return 1473 for 'MCDLXXXII'  ", () => {
-
+    expect(new RomanNumber('MCDLXXXII').stringValue()).toBe(1473)
 })
 
-it("should return 1980 for 'MCMLXXX'  ", () => {
 
+it("should return 1980 for 'MCMLXXX'  ", () => {
+    expect(new RomanNumber('MCMLXXX').stringValue()).toBe(1980)
 })
 
 it("should throw 'invalid range' for 'MMMMCMXCIX'  ", () => {
